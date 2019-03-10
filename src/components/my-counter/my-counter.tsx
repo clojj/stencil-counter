@@ -1,15 +1,15 @@
 import { Component, Prop, State, Event, EventEmitter/*, Listen*/ } from '@stencil/core';
 
-
 @Component({
-  tag: 'my-counter',
-  styleUrl: 'my-counter.scss'
+	tag: 'my-counter',
+	styleUrl: 'my-counter.css',
+	// shadow: true
 })
 export class MyName {
 
-  	@Prop() start: number = 1;
-  	@Prop() max: number = 100;
-  	@Prop() min: number = 0;
+	@Prop() start: number = 1;
+	@Prop() max: number = 100;
+	@Prop() min: number = 0;
 	@Prop() step: number = 1;
 
 	@State() value: number;
@@ -24,14 +24,14 @@ export class MyName {
      */
 
 	componentWillLoad() {
-        this.value = this.start;
-    }
+		this.value = this.start;
+	}
 
-    increment() {
-        const newValue = this.value + this.step;
-        this.value = newValue > this.max ? this.max : newValue;
-        this.message.emit(this.value);
-    }
+	increment() {
+		const newValue = this.value + this.step;
+		this.value = newValue > this.max ? this.max : newValue;
+		this.message.emit(this.value);
+	}
 
 	decrement() {
 		const newValue = this.value - this.step;
@@ -42,13 +42,13 @@ export class MyName {
 	render() {
 		return (
 			<div>
-				<button type="button" onClick={() => this.increment()}>
+				<button class='plus' type="button" onClick={() => this.increment()}>
 					+
 				</button>
 				<span>
 					{this.value}
 				</span>
-				<button type="button" onClick={() => this.decrement()}>
+				<button class='minus' type="button" onClick={() => this.decrement()}>
 					-
 				</button>
 			</div>
